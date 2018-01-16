@@ -13,9 +13,7 @@ function start(){
     var secPlaceholder = document.getElementById("secPlaceholder");
 
     var myTimer = null; /* TIMER ID PLACEHOLDER */ /*CAN BE USED TO CHECK IF TIMER HAS STARTED */
-    // var myTimerState;
     var timerStarted = false;
-
     var timerH = 0;
     var timerMin = 0;
     var timerS = 0;
@@ -27,9 +25,6 @@ function start(){
         console.log(myTimer);
         console.log(timerStarted);
         startBtn.removeEventListener("click", startTimer);
-        // console.log("start");
-        // myTimerState = true;
-        // myTimer = setInterval(addSec,interval);
 
         // FIRST START
         if(myTimer == null & !timerStarted){
@@ -55,36 +50,9 @@ function start(){
         resetBtn.addEventListener("click", resetTimer);
         fasterBtn.addEventListener("click", fasterTimer);
         slowerBtn.addEventListener("click", slowerTimer);
-
-        // COLORING ACTIVE BUTTONS
-        // if(!timerStarted){
-        //     btns.forEach(function(button){
-        //         button.classList.toggle("inactive");
-        //         timerStarted = true;
-        //     })
-        // }
     }
 
     function stateTimer(){
-
-        // if(myTimerState === true){
-        //     clearInterval(myTimer);
-        //     myTimerState = false;
-        //     fasterBtn.removeEventListener("click", fasterTimer);
-        //     fasterBtn.classList.add("inactive");
-        //     slowerBtn.removeEventListener("click", slowerTimer);
-        //     slowerBtn.classList.add("inactive");
-        //     stateBtn.textContent = "CONTINUE";
-        // }else{
-        //     myTimerState = true;
-        //     fasterBtn.addEventListener("click", fasterTimer);
-        //     fasterBtn.classList.remove("inactive");
-        //     slowerBtn.addEventListener("click", slowerTimer);
-        //     slowerBtn.classList.remove("inactive");
-        //     stateBtn.textContent = "PAUSE";
-        //     startTimer();
-        // }
-
         if(myTimer){
             clearInterval(myTimer);
             console.log("PAUSE");
@@ -117,9 +85,9 @@ function start(){
         myTimer = null;
         timerStarted = false;
         stateBtn.textContent = "PAUSE";
-        secPlaceholder.textContent = timerS;
-        minPlaceholder.textContent = timerMin;
-        hPlaceholder.textContent = timerH;
+        secPlaceholder.textContent = "00";
+        minPlaceholder.textContent = "00";
+        hPlaceholder.textContent = "00";
 
         /* EVENT HANDLERS */
         startBtn.addEventListener("click", startTimer);
@@ -139,16 +107,6 @@ function start(){
     }
 
     function fasterTimer(){
-        // console.log("faster");
-        // if(interval > 1){ /* to prevent from reaching 0 */
-        //     interval = interval / 2;
-        // }else{
-        //     interval = interval;
-        // }
-        // console.log(interval);
-        // clearInterval(myTimer);
-        // myTimer = setInterval(addSec,interval); /*RESTARTING TIMER WITH NEW SPEED */
-
         if(myTimer){
             console.log("faster");
             if(interval > 1){ /* to prevent from reaching 0 */
@@ -165,17 +123,6 @@ function start(){
     }
 
     function slowerTimer(){
-        // console.log("slower");
-        // if(interval < 600000){
-        //     interval = interval * 2;
-        // }else{
-        //     interval = interval;
-        //     console.log("TIME HAS STOPPED!")
-        // }
-        // console.log(interval);
-        // clearInterval(myTimer);
-        // myTimer = setInterval(addSec,interval); /*RESTARTING TIMER WITH NEW SPEED */
-
         if(myTimer){
             console.log("slower");
             if(interval < 6000000){ /* to prevent from reaching 0 */
@@ -192,31 +139,46 @@ function start(){
     }
 
     function addSec(){
-        timerS +=1;
-        if(timerS<59){
-            secPlaceholder.textContent = timerS;
+        if(timerS<=59){
+            let str = "0" + timerS;
+            str = str.substring((str.length-2),str.length);
+            secPlaceholder.textContent = str;
         }else{
-            addMin();
             timerS = 0;
+            let str = "0" + timerS;
+            str = str.substring((str.length-2),str.length);
+            secPlaceholder.textContent = str;
+            addMin();
         }
+        timerS +=1;
     }
 
     function addMin(){
         timerMin +=1;
-        if(timerMin<59){
-            minPlaceholder.textContent = timerMin;
+        if(timerMin<60){
+            let str = "0" + timerMin;
+            str = str.substring((str.length-2),str.length);
+            minPlaceholder.textContent = str;
         }else{
-            addHour();
             timerMin = 0;
+            let str = "0" + timerMin;
+            str = str.substring((str.length-2),str.length);
+            minPlaceholder.textContent = str;
+            addHour();
         }
     }
 
     function addHour(){
         timerH +=1;
         if(timerH<24){
-            hPlaceholder.textContent = timerH;
+            let str = "0" + timerH;
+            str = str.substring((str.length-2),str.length);
+            hPlaceholder.textContent = str;
         }else{
             timerH = 0;
+            let str = "0" + timerH;
+            str = str.substring((str.length-2),str.length);
+            hPlaceholder.textContent = str;
         }
     }
 }
