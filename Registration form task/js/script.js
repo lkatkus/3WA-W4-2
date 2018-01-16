@@ -24,3 +24,23 @@ function validate(){
     console.log(z);
 
 }
+
+
+// EMAIL SELECTOR
+// \w*?[.-]?\w+@[\w,\[]+\:?\.?\w+?\-?\w+:*?\w+?\.?\]?(com|org|edu|solutions)?$
+
+// prettyandsimple@example.com
+// very.common@example.com
+// very-common@example.com
+// disposable.style.email.with+symbol@example.com
+// other.email-with-dash@example.com
+// fully-qualified-domain@example.com
+// user.name+tag+sorting@example.com
+// x@example.com
+// "very.(),:;<>[]\".VERY.\"very@\\ \"very\".unusual"@strange.example.com
+// example-indeed@strange-example.com
+// admin@mailserver1 #!$%&'*+-/=?^_`{}|~@example.org
+// "()<>[]:,;@\\\"!#$%&'-/=?^_`{}| ~.a"@example.org
+// example@s.solutions
+// user@localserver
+// user@[2001:DB8::1]
