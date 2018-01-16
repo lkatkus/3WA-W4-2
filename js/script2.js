@@ -24,6 +24,7 @@ function start(){
         myTimerState = true;
         myTimer = setInterval(addSec,interval);
 
+        startBtn.removeEventListener("click", startTimer);
         stateBtn.addEventListener("click", stateTimer);
         resetBtn.addEventListener("click", resetTimer);
         fasterBtn.addEventListener("click", fasterTimer);
@@ -53,6 +54,12 @@ function start(){
         secPlaceholder.textContent = timerS;
         minPlaceholder.textContent = timerMin;
         hPlaceholder.textContent = timerH;
+
+        startBtn.addEventListener("click", startTimer);
+        stateBtn.removeEventListener("click", stateTimer);
+        resetBtn.removeEventListener("click", resetTimer);
+        fasterBtn.removeEventListener("click", fasterTimer);
+        slowerBtn.removeEventListener("click", slowerTimer);
     }
 
     function fasterTimer(){
@@ -62,7 +69,6 @@ function start(){
         }else{
             interval = interval;
         }
-
         console.log(interval);
         clearInterval(myTimer);
         myTimer = setInterval(addSec,interval);
@@ -71,6 +77,7 @@ function start(){
     function slowerTimer(){
         console.log("slower");
         interval = interval * 2;
+        console.log(interval);
         clearInterval(myTimer);
         myTimer = setInterval(addSec,interval);
     }
