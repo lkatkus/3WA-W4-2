@@ -1,0 +1,16 @@
+.row{
+    margin: 10px 0 10px 0;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px;
+    background-color: firebrick;
+    color: white;
+}
+
+.timer{
+    display: inline-block;
+    padding: 10px;
+    background-color: #d3d3d3;
+}
