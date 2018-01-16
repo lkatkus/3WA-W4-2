@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Registration form task</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src="js/script.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="text-center">Registration form</h1>
+            <form action="index.html" method="post" name="registrationForm">
+                <div class="row">
+                    <label class="divLabel"for="userUsername">Username</label>
+                    <input class="divInput" id="userUsername" type="text" name="userUsername" placeholder="required, 5-12 characters">
+                </div>
+
+                <div class="row">
+                    <label class="divLabel"for="userPassword">Password</label>
+                    <input class="divInput" id="userPassword" type="text" name="userPassword" placeholder="required, 7-12 characters"></input>
+                </div>
+
+                <div class="row">
+                    <label class="divLabel"for="userName">Name</label>
+                    <input class="divInput" id="userName" type="text" name="userName" placeholder="required, letters only"></input>
+                </div>
+
+                <div class="row">
+                    <label class="divLabel"for="userAdress">Adress</label>
+                    <input class="divInput" id="userAdress" type="text" name="userAdress" placeholder="optional"></input>
+                </div>
+
+                <div class="row">
+                    <label class="divLabel"for="userCountry">City</label>
+                    <select class="divInput" id="userCountry">
+                        <option value="Vilnius">Vilnius</option>
+                        <option value="Kaunas">Kaunas</option>
+                        <option value="Mozambikas">Mozambikas</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <label class="divLabel" for="userZip">ZIP code</label>
+                    <input class="divInput" id="userZip" type="text" name="userZip" placeholder="required, numbers only"></input>
+                </div>
+
+                <div class="row">
+                    <label class="divLabel"for="userMail">Email</label>
+                    <input class="divInput" id="userMail" type="text" name="userEmail" placeholder="required, valit email only"></input>
+                </div>
+
+                <div class="row">
+                    <label class="divLabel">Gender</label>
+                    <div class="divInput">
+                        <input id="male" type="radio" name="userGender" value="male">
+                        <label for="male">Male</label>
+                        <input id="female" type="radio" name="userGender" value="female">
+                        <label for="female">Female</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="divLabel">Language</label>
+                    <div class="divInput">
+                        <input id="langEng" type="checkbox" name="langEng" value="english">
+                        <label for="langEng">English</label>
+                        <input id="langOther" type="checkbox" name="langOther" value="other">
+                        <label for="langOther">Other</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="divLabel">
+                        <label for="userComments">About</label>
+                    </div>
+                    <div class="divInput">
+                        <textarea id="userComments" name="userComments" rows="8" placeholder="Optional"></textarea>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <input id="submitBtn" type="button" value="Submit" onclick="validate()">
+                    <input type="reset" value="Reset">
+                </div>
+
+            </form>
+        </div>
+    </body>
+</html>
