@@ -4,6 +4,7 @@ var inputPassword;
 var inputName;
 var inputZip;
 var inputEmail;
+var inputCountry;
 
 // MAIN VALIDATION FUNCTION
 function validate(){
@@ -13,11 +14,13 @@ function validate(){
     inputName = document.getElementById("userName");
     inputZip = document.getElementById("userZip");
     inputEmail = document.getElementById("userEmail");
+    inputCountry = document.getElementById("userCountry");
 
     // CALLING VALIDATION FUNCTION
     checkUsername(inputUsername);
     checkPassword(inputPassword);
     checkName(inputName);
+    checkCountry(inputCountry);
     checkZip(inputZip);
     checkEmail(inputEmail);
     checkGender();
@@ -26,30 +29,33 @@ function validate(){
 
 // VALIDATION FUNCTION
 function checkUsername(input){
-    let checker = /^\w{5,12}$/.test(input.value);
+    let checker = /^\w{5,12}$/.test(input.value); /*DOES NOT ACCEPT SYMBOLS*/
     console.log(checker);
     if(!checker){
         inputUsername.classList.add("error");
+        addErrorTag(input);
     }else{
         input.classList.remove("error");
     }
 }
 
 function checkPassword(input){
-    let checker = /^\w{7,12}$/.test(input.value);
+    let checker = /^\w{7,12}$/.test(input.value); /*DOES NOT ACCEPT SYMBOLS*/
     console.log(checker);
     if(!checker){
         input.classList.add("error");
+        addErrorTag(input);
     }else{
         input.classList.remove("error");
     }
 }
 
 function checkName(input){
-    let checker = /^\w+$/.test(input.value);
+    let checker = /^[a-z,A-Z]+$/.test(input.value);
     console.log(checker);
     if(!checker){
         input.classList.add("error");
+        addErrorTag(input);
     }else{
         input.classList.remove("error");
     }
@@ -60,13 +66,21 @@ function checkZip(input){
     console.log(checker);
     if(!checker){
         input.classList.add("error");
+        addErrorTag(input);
     }else{
         input.classList.remove("error");
     }
 }
 
 function checkEmail(input){
-    console.log(input.value);
+    if(input.value){
+        console.log("OK");
+        input.classList.remove("error");
+    }else{
+        console.log("ERROR");
+        input.classList.add("error");
+        addErrorTag(input);
+    }
 }
 
 function checkGender(){
@@ -79,6 +93,7 @@ function checkGender(){
     }else{
         console.log("no gender selected");
         document.getElementById("genderDiv").classList.add("error");
+        addErrorTag(document.getElementById("genderDiv"));
     }
 }
 
@@ -92,10 +107,29 @@ function checkLanguage(){
     }else{
         console.log("no language selected");
         document.getElementById("languageDiv").classList.add("error");
+        addErrorTag(document.getElementById("languageDiv"));
     }
 
     // !!! ADDED CHECKER WHEN BOTH ARE SELECTED !!!
 }
+
+function checkCountry(input){
+    if(input.value === ""){
+        console.log("NONE")
+        input.classList.add("error");
+    }else{
+        console.log(input.value);
+        input.classList.remove("error");
+        addErrorTag(input); /* ERROR */
+    }
+}
+
+function addErrorTag(input){
+    var tag = document.createElement("div");
+    tag.classList.add("errorTag");
+    input.parentElement.appendChild(tag);
+}
+
 
 // EMAIL SELECTOR
 // \w*?[.-]?\w+@[\w,\[]+\:?\.?\w+?\-?\w+:*?\w+?\.?\]?(com|org|edu|solutions)?$
