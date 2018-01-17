@@ -69,6 +69,7 @@ function checkZip(input){
         addErrorTag(input);
     }else{
         input.classList.remove("error");
+        removeErrorTag(input);
     }
 }
 
@@ -76,6 +77,7 @@ function checkEmail(input){
     if(input.value){
         console.log("OK");
         input.classList.remove("error");
+        removeErrorTag(input);
     }else{
         console.log("ERROR");
         input.classList.add("error");
@@ -85,9 +87,10 @@ function checkEmail(input){
 
 function checkGender(){
     if(document.getElementById("genderMale").checked) {
-      console.log("male");
-      document.getElementById("genderDiv").classList.remove("error");
-  }else if(document.getElementById("genderFemale").checked) {
+        console.log("male");
+        document.getElementById("genderDiv").classList.remove("error");
+        
+    }else if(document.getElementById("genderFemale").checked) {
         console.log("female");
         document.getElementById("genderDiv").classList.remove("error");
     }else{
@@ -117,17 +120,28 @@ function checkCountry(input){
     if(input.value === ""){
         console.log("NONE")
         input.classList.add("error");
+        addErrorTag(input);
     }else{
         console.log(input.value);
-        input.classList.remove("error");
-        addErrorTag(input); /* ERROR */
+        input.classList.remove("OK");
     }
 }
 
 function addErrorTag(input){
-    var tag = document.createElement("div");
-    tag.classList.add("errorTag");
-    input.parentElement.appendChild(tag);
+    let tagGroup = document.createElement("div");
+    let tagDiv = document.createElement("div");
+    tagGroup.classList.add("errorTagGroup");
+    tagDiv.classList.add("errorTag");
+    tagDiv.textContent = "Required";
+    tagGroup.appendChild(tagDiv)
+    input.parentElement.appendChild(tagGroup);
+}
+
+function removeErrorTag(input){
+    console.log(input);
+    console.log(input.parentElement);
+    console.log(input.parentElement.querySelector(".errorTagGroup"));
+    input.parentElement.removeChild(input.parentElement.querySelector(".errorTagGroup"));
 }
 
 
