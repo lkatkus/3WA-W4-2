@@ -1,21 +1,30 @@
+// VARIABLES
 var inputUsername;
 var inputPassword;
 var inputName;
+var inputZip;
+var inputEmail;
 
+// MAIN VALIDATION FUNCTION
 function validate(){
+    // CAPTURING INPUT VALUES
     inputUsername = document.getElementById("userUsername");
     inputPassword = document.getElementById("userPassword");
     inputName = document.getElementById("userName");
     inputZip = document.getElementById("userZip");
+    inputEmail = document.getElementById("userEmail");
 
+    // CALLING VALIDATION FUNCTION
     checkUsername(inputUsername);
     checkPassword(inputPassword);
     checkName(inputName);
     checkZip(inputZip);
-
+    checkEmail(inputEmail);
+    checkGender();
+    checkLanguage();
 }
 
-
+// VALIDATION FUNCTION
 function checkUsername(input){
     let checker = /^\w{5,12}$/.test(input.value);
     console.log(checker);
@@ -54,6 +63,38 @@ function checkZip(input){
     }else{
         input.classList.remove("error");
     }
+}
+
+function checkEmail(input){
+    console.log(input.value);
+}
+
+function checkGender(){
+    if(document.getElementById("genderMale").checked) {
+      console.log("male");
+      document.getElementById("genderDiv").classList.remove("error");
+  }else if(document.getElementById("genderFemale").checked) {
+        console.log("female");
+        document.getElementById("genderDiv").classList.remove("error");
+    }else{
+        console.log("no gender selected");
+        document.getElementById("genderDiv").classList.add("error");
+    }
+}
+
+function checkLanguage(){
+    if(document.getElementById("langEng").checked) {
+      console.log("English");
+      document.getElementById("languageDiv").classList.remove("error");
+    }else if(document.getElementById("langOther").checked) {
+        console.log("Other");
+        document.getElementById("languageDiv").classList.remove("error");
+    }else{
+        console.log("no language selected");
+        document.getElementById("languageDiv").classList.add("error");
+    }
+
+    // !!! ADDED CHECKER WHEN BOTH ARE SELECTED !!!
 }
 
 // EMAIL SELECTOR

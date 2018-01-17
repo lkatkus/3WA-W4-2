@@ -9,6 +9,9 @@
     <body>
         <div class="container">
             <h1 class="text-center">Registration form</h1>
+
+            <hr>
+
             <form action="index.html" method="post" name="registrationForm">
                 <div class="row">
                     <label class="divLabel"for="userUsername">Username</label>
@@ -45,23 +48,23 @@
                 </div>
 
                 <div class="row">
-                    <label class="divLabel"for="userMail">Email</label>
-                    <input class="divInput" id="userMail" type="text" name="userEmail" placeholder="required, valit email only"></input>
+                    <label class="divLabel"for="userEmail">Email</label>
+                    <input class="divInput" id="userEmail" type="text" name="userEmail" placeholder="required, valit email only"></input>
                 </div>
 
                 <div class="row">
                     <label class="divLabel">Gender</label>
-                    <div class="divInput">
-                        <input id="male" type="radio" name="userGender" value="male">
-                        <label for="male">Male</label>
-                        <input id="female" type="radio" name="userGender" value="female">
-                        <label for="female">Female</label>
+                    <div id="genderDiv" class="divInput">
+                        <input id="genderMale" type="radio" name="userGender" value="male">
+                        <label for="genderMale">Male</label>
+                        <input id="genderFemale" type="radio" name="userGender" value="female">
+                        <label for="genderFemale">Female</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <label class="divLabel">Language</label>
-                    <div class="divInput">
+                    <div id="languageDiv" class="divInput">
                         <input id="langEng" type="checkbox" name="langEng" value="english">
                         <label for="langEng">English</label>
                         <input id="langOther" type="checkbox" name="langOther" value="other">
