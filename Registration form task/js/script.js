@@ -6,25 +6,55 @@ function validate(){
     inputUsername = document.getElementById("userUsername");
     inputPassword = document.getElementById("userPassword");
     inputName = document.getElementById("userName");
+    inputZip = document.getElementById("userZip");
 
-    console.log(inputUsername.value);
-    console.log(inputPassword.value);
-    console.log(inputName.value);
-
-    let z = /^[a-zA-Z]{5,12}$/.test(inputUsername.value);
-    console.log(z);
-    if(!z){
-        inputUsername.classList.toggle("error");
-    }
-
-    z = /^[a-zA-Z]{7,12}$/.test(inputPassword.value);
-    console.log(z);
-
-    z = /^[a-zA-Z]+$/.test(inputName.value);
-    console.log(z);
+    checkUsername(inputUsername);
+    checkPassword(inputPassword);
+    checkName(inputName);
+    checkZip(inputZip);
 
 }
 
+
+function checkUsername(input){
+    let checker = /^\w{5,12}$/.test(input.value);
+    console.log(checker);
+    if(!checker){
+        inputUsername.classList.add("error");
+    }else{
+        input.classList.remove("error");
+    }
+}
+
+function checkPassword(input){
+    let checker = /^\w{7,12}$/.test(input.value);
+    console.log(checker);
+    if(!checker){
+        input.classList.add("error");
+    }else{
+        input.classList.remove("error");
+    }
+}
+
+function checkName(input){
+    let checker = /^\w+$/.test(input.value);
+    console.log(checker);
+    if(!checker){
+        input.classList.add("error");
+    }else{
+        input.classList.remove("error");
+    }
+}
+
+function checkZip(input){
+    let checker = /^\d+$/.test(input.value);
+    console.log(checker);
+    if(!checker){
+        input.classList.add("error");
+    }else{
+        input.classList.remove("error");
+    }
+}
 
 // EMAIL SELECTOR
 // \w*?[.-]?\w+@[\w,\[]+\:?\.?\w+?\-?\w+:*?\w+?\.?\]?(com|org|edu|solutions)?$
