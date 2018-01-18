@@ -1,4 +1,6 @@
 // VARIABLES
+var input;
+
 var inputUsername;
 var inputPassword;
 var inputName;
@@ -16,6 +18,8 @@ function validate(){
     inputEmail = document.getElementById("userEmail");
     inputCountry = document.getElementById("userCountry");
 
+    console.log("============");
+
     // CALLING VALIDATION FUNCTION
     checkUsername(inputUsername);
     checkPassword(inputPassword);
@@ -30,23 +34,23 @@ function validate(){
 // VALIDATION FUNCTION
 function checkUsername(input){
     let checker = /^\w{5,12}$/.test(input.value); /*DOES NOT ACCEPT SYMBOLS*/
-    console.log(checker);
     if(!checker){
         inputUsername.classList.add("error");
         addErrorTag(input);
     }else{
         input.classList.remove("error");
+        removeErrorTag(input);
     }
 }
 
 function checkPassword(input){
     let checker = /^\w{7,12}$/.test(input.value); /*DOES NOT ACCEPT SYMBOLS*/
-    console.log(checker);
     if(!checker){
         input.classList.add("error");
         addErrorTag(input);
     }else{
         input.classList.remove("error");
+        removeErrorTag(input);
     }
 }
 
@@ -58,6 +62,19 @@ function checkName(input){
         addErrorTag(input);
     }else{
         input.classList.remove("error");
+        removeErrorTag(input);
+    }
+}
+
+function checkCountry(input){
+    if(input.value === ""){
+        console.log("NONE")
+        input.classList.add("error");
+        addErrorTag(input);
+    }else{
+        console.log(input.value);
+        input.classList.remove("error");
+        removeErrorTag(input);
     }
 }
 
@@ -89,10 +106,11 @@ function checkGender(){
     if(document.getElementById("genderMale").checked) {
         console.log("male");
         document.getElementById("genderDiv").classList.remove("error");
-        
+        removeErrorTag(document.getElementById("genderDiv"));
     }else if(document.getElementById("genderFemale").checked) {
         console.log("female");
         document.getElementById("genderDiv").classList.remove("error");
+        removeErrorTag(document.getElementById("genderDiv"));
     }else{
         console.log("no gender selected");
         document.getElementById("genderDiv").classList.add("error");
@@ -104,9 +122,11 @@ function checkLanguage(){
     if(document.getElementById("langEng").checked) {
       console.log("English");
       document.getElementById("languageDiv").classList.remove("error");
+      removeErrorTag(document.getElementById("languageDiv"));
     }else if(document.getElementById("langOther").checked) {
         console.log("Other");
         document.getElementById("languageDiv").classList.remove("error");
+        removeErrorTag(document.getElementById("languageDiv"));
     }else{
         console.log("no language selected");
         document.getElementById("languageDiv").classList.add("error");
@@ -114,17 +134,6 @@ function checkLanguage(){
     }
 
     // !!! ADDED CHECKER WHEN BOTH ARE SELECTED !!!
-}
-
-function checkCountry(input){
-    if(input.value === ""){
-        console.log("NONE")
-        input.classList.add("error");
-        addErrorTag(input);
-    }else{
-        console.log(input.value);
-        input.classList.remove("OK");
-    }
 }
 
 function addErrorTag(input){
@@ -138,10 +147,16 @@ function addErrorTag(input){
 }
 
 function removeErrorTag(input){
-    console.log(input);
-    console.log(input.parentElement);
-    console.log(input.parentElement.querySelector(".errorTagGroup"));
-    input.parentElement.removeChild(input.parentElement.querySelector(".errorTagGroup"));
+    let tagGroup = input.parentElement.querySelector(".errorTagGroup");
+    if(!tagGroup){
+        console.log("NERA TAGO");
+    }else{
+        console.log(input);
+        console.log(input.parentElement);
+        console.log(tagGroup);
+        input.parentElement.removeChild(tagGroup);
+    }
+    return; /* ERROR NOT WORKING PROPERLY */
 }
 
 
